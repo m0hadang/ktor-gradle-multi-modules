@@ -41,6 +41,15 @@ subprojects {
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
     }
+
+    tasks.getByName("bootJar") {
+        enabled = false // 모든 subproject 들이 실행 가능한 jar 파일 생성할 필요 없기에 false
+    }
+
+    tasks.getByName("jar") {
+        enabled = true // 기본적으로 subproject 들은 일반 jar 파일 생성
+    }
+
     tasks.withType<KotlinCompile> {
         kotlinOptions {
             freeCompilerArgs += "-Xjsr305=strict"

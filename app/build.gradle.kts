@@ -1,9 +1,9 @@
 tasks.getByName("bootJar") {
-    enabled = false
+    enabled = true // 실행 가능한 jar 파일 생성
 }
 
 tasks.getByName("jar") {
-    enabled = true
+    enabled = false
 }
 
 dependencies {
