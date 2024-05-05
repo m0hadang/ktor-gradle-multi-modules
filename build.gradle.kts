@@ -3,10 +3,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 // root project
 
 plugins {
-    id("org.springframework.boot") version "3.2.5"
-    id("io.spring.dependency-management") version "1.1.4"
-    kotlin("jvm") version "1.9.23" // 현재 build.gradle.kts 에서 java, import 같은 키워드 사용하기 위해 필요
-    kotlin("plugin.spring") version "1.9.23"
+    id("org.springframework.boot")
+    id("io.spring.dependency-management")
+    // 현재 build.gradle.kts 에서 java, import 같은 키워드 사용하기 위해 필요
+    kotlin("jvm")
+    kotlin("plugin.spring")
 }
 
 // kotlin과 호환될 java 버전 설정(현재 root project 에만 적용)
@@ -14,10 +15,13 @@ java {
     sourceCompatibility = JavaVersion.VERSION_17
 }
 
+val projectGroup: String by project
+val applicationVersion: String by project
+
 // 모든 project에 적용
 allprojects {
-    group = "com.example"
-    version = "0.0.1-SNAPSHOT"
+    group = projectGroup
+    version = applicationVersion
     repositories {
         mavenCentral()
     }
